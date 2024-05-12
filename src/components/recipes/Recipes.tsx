@@ -1,18 +1,17 @@
 import React, {FC, useEffect, useState} from 'react';
-import Recipe,{IRecipeProps,IRecipeTypeProps} from "../recipe/Recipe";
+import Recipe,{} from "../recipe/Recipe";
+import {getAllrecipes} from "../../services/recipes.api.service";
+import {IRecipeProps} from "../../models/Recipe";
+
 
 
 const Recipes:FC  = () => {
 
 
 const[recipes,setResipes]=useState <IRecipeProps []>  ([]);//це масив повертає геттер і сеттер
-  useEffect(()=>{
-    fetch('https://dummyjson.com/recipes')
-        .then(value => value.json())
-        .then(({recipes})=> {
-          setResipes(recipes);
-        });
-  },[]);
+    useEffect(() => {
+        getAllrecipes().then(value => setResipes(value.data))
+    }, []);
 
 
     return (

@@ -1,24 +1,6 @@
 import React, {FC} from 'react';
-import {json} from "stream/consumers";
-export  interface IRecipeProps {
+import {IRecipeProps} from "../../models/Recipe";
 
-    "id"?: number,
-    "name"?: string,
-    "ingredients"?: string[],
-    "instructions"?: string[],
-    "prepTimeMinutes"?: number,
-    "cookTimeMinutes"?: number,
-    "servings"?: number,
-    "difficulty"?: string,
-    "cuisine"?: string,
-    "caloriesPerServing"?: string,
-    "tags"?: string[],
-    "userId"?: string,
-    "image"?: string,
-    "rating"?: number,
-    "reviewCount"?: number,
-    "mealType"?: string[]
-}
  export type IRecipeTypeProps=IRecipeProps & {children?:React.ReactNode}
 const Recipe:FC<IRecipeTypeProps>  = ({
                                           id,
@@ -29,7 +11,7 @@ const Recipe:FC<IRecipeTypeProps>  = ({
                                           image}) => {
     return (
         <div>
-            <h2>{name}.{mealType}.{cuisine}</h2>
+            <h2>{id}-{name}.{mealType}.{cuisine}</h2>
             <img src={image} alt={name}/>
             <ul>
                 {
